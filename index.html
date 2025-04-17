@@ -4,17 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Suraj Devasthali - Senior PowerPlatform Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
     :root {
-      --primary-color: #2c3e50;
-      --secondary-color: #3498db;
-      --accent-color: #e74c3c;
-      --light-gray: #f5f7fa;
-      --medium-gray: #e1e8f0;
-      --dark-gray: #7f8c8d;
-      --text-color: #333;
-      --white: #ffffff;
+      --primary-color: #2563eb;
+      --primary-dark: #1e40af;
+      --secondary-color: #7c3aed;
+      --accent-color: #ec4899;
+      --dark-color: #1e293b;
+      --light-color: #f8fafc;
+      --gray-light: #e2e8f0;
+      --gray-medium: #94a3b8;
+      --gray-dark: #475569;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --error-color: #ef4444;
     }
     
     * {
@@ -24,33 +29,74 @@
     }
     
     body {
-      font-family: 'Roboto', sans-serif;
-      color: var(--text-color);
+      font-family: 'Inter', sans-serif;
+      color: var(--dark-color);
       line-height: 1.6;
-      background-color: #f9f9f9;
+      background-color: #f1f5f9;
       padding: 20px;
     }
     
     .resume-container {
       max-width: 1000px;
       margin: 0 auto;
-      background: var(--white);
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
       overflow: hidden;
+      position: relative;
+      border: 1px solid var(--gray-light);
+    }
+    
+    .download-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      z-index: 10;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .download-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     }
     
     /* Header Section */
     .header {
       display: flex;
       align-items: center;
-      padding: 30px 40px;
-      background: var(--primary-color);
-      color: var(--white);
+      padding: 40px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--light-color);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
     }
     
     .profile-pic-container {
       margin-right: 30px;
+      position: relative;
+      z-index: 2;
     }
     
     .profile-pic {
@@ -58,27 +104,43 @@
       height: 120px;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid var(--secondary-color);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border: 4px solid rgba(255,255,255,0.3);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
     
     .header-content {
       flex: 1;
+      position: relative;
+      z-index: 2;
     }
     
     .name {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.2rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.4rem;
       font-weight: 700;
       margin-bottom: 5px;
-      color: var(--white);
+      color: var(--light-color);
+      letter-spacing: -0.5px;
     }
     
     .title {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 400;
-      margin-bottom: 15px;
-      color: var(--medium-gray);
+      margin-bottom: 20px;
+      color: rgba(255,255,255,0.9);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .title::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--accent-color);
+      border-radius: 3px;
     }
     
     .contact-info {
@@ -91,11 +153,21 @@
       display: flex;
       align-items: center;
       font-size: 0.9rem;
+      background: rgba(255,255,255,0.1);
+      padding: 6px 12px;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      transition: all 0.2s ease;
+    }
+    
+    .contact-item:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
     }
     
     .contact-item i {
       margin-right: 8px;
-      color: var(--secondary-color);
+      color: white;
     }
     
     /* Main Content */
@@ -103,7 +175,7 @@
       display: grid;
       grid-template-columns: 1fr 2fr;
       gap: 30px;
-      padding: 30px;
+      padding: 40px;
     }
     
     /* Left Column */
@@ -118,79 +190,141 @@
       display: flex;
       flex-direction: column;
       gap: 30px;
+      border-left: 1px solid var(--gray-light);
+      padding-left: 30px;
     }
     
     /* Section Styling */
     .section {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
     
     .section-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.3rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
       font-weight: 700;
       color: var(--primary-color);
-      margin-bottom: 15px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid var(--medium-gray);
+      margin-bottom: 20px;
+      position: relative;
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--accent-color);
+      border-radius: 3px;
     }
     
     /* Profile Section */
     .profile-text {
       font-size: 0.95rem;
-      text-align: justify;
+      line-height: 1.7;
+      color: var(--gray-dark);
     }
     
     /* Experience Section */
     .experience-item, .education-item, .project-item {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      position: relative;
+      padding-left: 25px;
+    }
+    
+    .experience-item::before, .education-item::before, .project-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      border: 2px solid var(--gray-light);
+    }
+    
+    .experience-item::after, .education-item::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 17px;
+      bottom: -25px;
+      width: 2px;
+      background: var(--gray-light);
     }
     
     .job-header, .education-header, .project-header {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
     }
     
     .job-title, .education-degree, .project-name {
-      font-weight: 600;
-      color: var(--secondary-color);
+      font-weight: 700;
+      color: var(--dark-color);
       font-size: 1.1rem;
     }
     
     .company-name, .institution-name {
-      font-weight: 500;
+      font-weight: 600;
       color: var(--primary-color);
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .company-name::before, .institution-name::before {
+      content: "▹";
+      color: var(--accent-color);
+      font-size: 1.2rem;
     }
     
     .job-duration, .education-duration {
-      color: var(--dark-gray);
+      color: var(--gray-medium);
       font-size: 0.9rem;
+      background: var(--gray-light);
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-weight: 500;
     }
     
     .job-description, .project-description {
       font-size: 0.95rem;
       margin-bottom: 10px;
+      color: var(--gray-dark);
+      line-height: 1.7;
     }
     
     /* Skills Section */
     .skills-container {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      grid-template-columns: 1fr;
+      gap: 15px;
     }
     
     .skill-category {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
     
     .skill-category-title {
-      font-weight: 600;
-      color: var(--primary-color);
-      margin-bottom: 8px;
-      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--dark-color);
+      margin-bottom: 12px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .skill-category-title::before {
+      content: "•";
+      color: var(--accent-color);
+      font-size: 1.5rem;
+      margin-right: 8px;
     }
     
     .skill-tags {
@@ -200,19 +334,37 @@
     }
     
     .skill-tag {
-      background-color: var(--light-gray);
-      padding: 5px 12px;
+      background-color: var(--gray-light);
+      padding: 6px 14px;
       border-radius: 20px;
       font-size: 0.85rem;
-      color: var(--primary-color);
+      color: var(--dark-color);
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    
+    .skill-tag:hover {
+      background-color: var(--primary-color);
+      color: white;
+      transform: translateY(-2px);
     }
     
     /* Projects Section */
     .project-tech {
-      font-style: italic;
-      color: var(--dark-gray);
-      font-size: 0.9rem;
-      margin-top: 5px;
+      font-size: 0.85rem;
+      margin-top: 8px;
+      color: var(--gray-medium);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .tech-tag {
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--primary-color);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 500;
     }
     
     /* Achievements Section */
@@ -222,46 +374,99 @@
     
     .achievement-item {
       position: relative;
-      padding-left: 25px;
-      margin-bottom: 10px;
+      padding-left: 30px;
+      margin-bottom: 15px;
       font-size: 0.95rem;
+      color: var(--gray-dark);
     }
     
-    .achievement-item:before {
-      content: "🏆";
+    .achievement-item::before {
+      content: "✓";
       position: absolute;
       left: 0;
+      top: 0;
+      color: var(--success-color);
+      font-weight: bold;
+      font-size: 1.1rem;
     }
     
     /* Hobbies Section */
     .hobbies-text {
       font-size: 0.95rem;
+      color: var(--gray-dark);
     }
     
     /* Declaration Section */
     .declaration-text {
       font-size: 0.9rem;
       font-style: italic;
+      color: var(--gray-dark);
+      padding: 15px;
+      background: var(--gray-light);
+      border-radius: 8px;
+      position: relative;
+    }
+    
+    .declaration-text::before {
+      content: """;
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      font-size: 3rem;
+      color: var(--primary-color);
+      opacity: 0.2;
+      font-family: serif;
+      line-height: 1;
     }
     
     /* Footer */
     .footer {
       text-align: center;
-      padding: 15px;
-      background-color: var(--primary-color);
-      color: var(--white);
+      padding: 20px;
+      background-color: var(--dark-color);
+      color: var(--light-color);
       font-size: 0.8rem;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    
+    .social-link {
+      color: var(--light-color);
+      background: rgba(255,255,255,0.1);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    
+    .social-link:hover {
+      background: var(--primary-color);
+      transform: translateY(-3px);
     }
     
     @media (max-width: 768px) {
       .header {
         flex-direction: column;
         text-align: center;
+        padding: 30px 20px;
       }
       
       .profile-pic-container {
         margin-right: 0;
         margin-bottom: 20px;
+      }
+      
+      .title::after {
+        left: 50%;
+        transform: translateX(-50%);
       }
       
       .contact-info {
@@ -270,16 +475,41 @@
       
       .main-content {
         grid-template-columns: 1fr;
+        padding: 20px;
       }
       
-      .skills-container {
-        grid-template-columns: 1fr;
+      .right-column {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--gray-light);
+        padding-top: 30px;
+      }
+      
+      .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .download-btn {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 0 auto 20px;
+        display: inline-flex;
       }
     }
   </style>
 </head>
 <body>
-  <div class="resume-container">
+  <div class="resume-container" id="resume">
+    <button class="download-btn" id="downloadBtn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+      </svg>
+      Download PDF
+    </button>
+    
     <!-- Header Section with Photo, Name, and Contact Info -->
     <header class="header">
       <div class="profile-pic-container">
@@ -293,13 +523,13 @@
             <i>📱</i> 956-144-0619
           </div>
           <div class="contact-item">
-            <i>✉️</i> <a href="mailto:SurajDevasthali@live.com" style="color: var(--white);">SurajDevasthali@live.com</a>
+            <i>✉️</i> SurajDevasthali@live.com
           </div>
           <div class="contact-item">
-            <i>🌐</i> <a href="http://readerstour.com" target="_blank" style="color: var(--white);">readerstour.com</a>
+            <i>🌐</i> readerstour.com
           </div>
           <div class="contact-item">
-            <i>🌐</i> <a href="https://surajdevasthali.github.io/Resume/" target="_blank" style="color: var(--white);">https://surajdevasthali.github.io/Resume/</a>
+            <i>💻</i> surajdevasthali.github.io
           </div>
         </div>
       </div>
@@ -328,6 +558,8 @@
                 <span class="skill-tag">Power Automate</span>
                 <span class="skill-tag">Power BI</span>
                 <span class="skill-tag">Dataverse</span>
+                <span class="skill-tag">Power Query</span>
+                <span class="skill-tag">DAX</span>
               </div>
             </div>
             
@@ -337,26 +569,29 @@
                 <span class="skill-tag">Java</span>
                 <span class="skill-tag">Spring Boot</span>
                 <span class="skill-tag">HTML/CSS</span>
+                <span class="skill-tag">JavaScript</span>
                 <span class="skill-tag">VBA</span>
               </div>
             </div>
             
             <div class="skill-category">
-              <h4 class="skill-category-title">Data</h4>
+              <h4 class="skill-category-title">Data & Cloud</h4>
               <div class="skill-tags">
                 <span class="skill-tag">SQL</span>
-                <span class="skill-tag">Power Query</span>
-                <span class="skill-tag">DAX</span>
+                <span class="skill-tag">SharePoint</span>
                 <span class="skill-tag">Excel</span>
+                <span class="skill-tag">AWS</span>
+                <span class="skill-tag">MySQL</span>
               </div>
             </div>
             
             <div class="skill-category">
-              <h4 class="skill-category-title">Tools</h4>
+              <h4 class="skill-category-title">Tools & Methods</h4>
               <div class="skill-tags">
-                <span class="skill-tag">SharePoint</span>
                 <span class="skill-tag">GitLab</span>
                 <span class="skill-tag">AI Tools</span>
+                <span class="skill-tag">Microservices</span>
+                <span class="skill-tag">Agile</span>
               </div>
             </div>
           </div>
@@ -381,23 +616,15 @@
               <span class="education-degree">MBA (Appeared)</span>
               <span class="education-duration">2023-2025</span>
             </div>
-            <div class="company-name">APJ Abdul Kalam Technical University</div>
+            <div class="institution-name">APJ Abdul Kalam Technical University</div>
           </div>
           
           <div class="education-item">
             <div class="education-header">
               <span class="education-degree">B.Com</span>
             </div>
-            <div class="company-name">YCMOU</div>
+            <div class="institution-name">YCMOU</div>
           </div>
-        </section>
-        
-        <!-- Hobbies -->
-        <section class="section">
-          <h3 class="section-title">Hobbies</h3>
-          <p class="hobbies-text">
-            Playing flute and guitar, writing travel blogs, and listening to Indian classical music.
-          </p>
         </section>
       </div>
       
@@ -410,22 +637,32 @@
           <div class="experience-item">
             <div class="job-header">
               <span class="job-title">Software Developer</span>
-              <span class="job-duration">March 2020 - Present</span>
+              <span class="job-duration">Mar 2020 - Present</span>
             </div>
             <div class="company-name">Amdocs</div>
             <p class="job-description">
               Designed, developed, and maintained Power Platform applications to meet diverse business needs. Collaborated with stakeholders to gather requirements, design intuitive interfaces, and develop efficient workflows.
+            </p>
+            <p class="job-description">
+              • Spearheaded the development of governance dashboards consolidating data from 15+ databases<br>
+              • Implemented automation solutions reducing manual work by 80%<br>
+              • Mentored junior developers in PowerPlatform best practices
             </p>
           </div>
           
           <div class="experience-item">
             <div class="job-header">
               <span class="job-title">Analyst</span>
-              <span class="job-duration">June 2014 - Feb 2020</span>
+              <span class="job-duration">Jun 2014 - Feb 2020</span>
             </div>
             <div class="company-name">Tata Consultancy Services, Pune, India</div>
             <p class="job-description">
               Developed canvas apps for mobile devices to enhance user experience and streamline processes. Created and optimized Power Automate flows, driving automation and operational efficiency.
+            </p>
+            <p class="job-description">
+              • Built leave management system with multi-level approvals used by 500+ employees<br>
+              • Developed Excel automation tools saving 15+ hours per week<br>
+              • Won Chess Championship two years in a row
             </p>
           </div>
         </section>
@@ -439,17 +676,28 @@
               <span class="project-name">Governance Dashboards</span>
             </div>
             <p class="project-description">
-              Created a comprehensive dashboard using PowerBI, PowerApps, and SharePoint with role-based access, managing data from 15+ large databases.
+              Comprehensive dashboard using PowerBI, PowerApps, and SharePoint with role-based access, managing data from 15+ large databases. Provides real-time insights to leadership.
             </p>
+            <div class="project-tech">
+              <span class="tech-tag">PowerBI</span>
+              <span class="tech-tag">PowerApps</span>
+              <span class="tech-tag">SharePoint</span>
+              <span class="tech-tag">Dataverse</span>
+            </div>
           </div>
           
           <div class="project-item">
             <div class="project-header">
-              <span class="project-name">HR Dashboard</span>
+              <span class="project-name">HR Analytics Dashboard</span>
             </div>
             <p class="project-description">
-              Created for higher management to consolidate and analyze HR data through BI and automation flows.
+              Created for higher management to consolidate and analyze HR data through BI and automation flows. Reduced HR reporting time by 70%.
             </p>
+            <div class="project-tech">
+              <span class="tech-tag">PowerBI</span>
+              <span class="tech-tag">Power Automate</span>
+              <span class="tech-tag">Excel</span>
+            </div>
           </div>
           
           <div class="project-item">
@@ -457,19 +705,29 @@
               <span class="project-name">Gamification Platform</span>
             </div>
             <p class="project-description">
-              Designed to measure and enhance employee engagement and performance by integrating various metrics and visualizations.
+              Designed to measure and enhance employee engagement and performance by integrating various metrics and visualizations. Increased team participation by 45%.
             </p>
-            <p class="project-tech">Technologies: PowerBI, HTML/CSS, DataFlow, SharePoint Lists</p>
+            <div class="project-tech">
+              <span class="tech-tag">PowerBI</span>
+              <span class="tech-tag">HTML/CSS</span>
+              <span class="tech-tag">DataFlow</span>
+              <span class="tech-tag">SharePoint</span>
+            </div>
           </div>
           
           <div class="project-item">
             <div class="project-header">
-              <span class="project-name">Ticket Management Platform</span>
+              <span class="project-name">Ticket Management System</span>
             </div>
             <p class="project-description">
-              Features a sleek design with minimalistic functionality, delivering exceptional user experience and significant business impact.
+              Features a sleek design with minimalistic functionality, delivering exceptional user experience and significant business impact. Reduced resolution time by 30%.
             </p>
-            <p class="project-tech">Technologies: Java, Microservices, Spring Boot, MySQL, AWS</p>
+            <div class="project-tech">
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">Spring Boot</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">AWS</span>
+            </div>
           </div>
           
           <div class="project-item">
@@ -477,19 +735,14 @@
               <span class="project-name">Leave Management System</span>
             </div>
             <p class="project-description">
-              Features include multi-level approvals, leave balance tracking, calendar integration, and CSV report generation.
+              Features include multi-level approvals, leave balance tracking, calendar integration, and CSV report generation. Used by 500+ employees.
             </p>
-            <p class="project-tech">Technologies: PowerApps, SharePoint, Office 365, MS-Flow</p>
-          </div>
-          
-          <div class="project-item">
-            <div class="project-header">
-              <span class="project-name">Personal Blogging Website</span>
+            <div class="project-tech">
+              <span class="tech-tag">PowerApps</span>
+              <span class="tech-tag">SharePoint</span>
+              <span class="tech-tag">Office 365</span>
+              <span class="tech-tag">Power Automate</span>
             </div>
-            <p class="project-description">
-              Developed ReadersTour.com, an engaging platform for travel enthusiasts to share and explore travel experiences.
-            </p>
-            <p class="project-tech">Technologies: HTML, CSS, JavaScript</p>
           </div>
         </section>
         
@@ -500,14 +753,15 @@
             <li class="achievement-item">Full Stack Development - FullStackGuru</li>
             <li class="achievement-item">SQL & VBA - Meraudi Education</li>
             <li class="achievement-item">Excel Expert Analytics - Finatics Online</li>
+            <li class="achievement-item">PowerPlatform Advanced Concepts - Microsoft Learn</li>
           </ul>
         </section>
         
-        <!-- Declaration -->
+        <!-- Hobbies -->
         <section class="section">
-          <h3 class="section-title">Declaration</h3>
-          <p class="declaration-text">
-            I hereby declare that the above information is true to the best of my knowledge and I bear the responsibility for its correctness.
+          <h3 class="section-title">Hobbies</h3>
+          <p class="hobbies-text">
+            Playing flute and guitar, writing travel blogs at readerstour.com, and listening to Indian classical music. Chess enthusiast and two-time company champion.
           </p>
         </section>
       </div>
@@ -518,5 +772,21 @@
       &copy; 2025 Suraj Devasthali. All Rights Reserved.
     </footer>
   </div>
+
+  <script>
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+      const element = document.getElementById('resume');
+      const opt = {
+        margin: 10,
+        filename: 'SurajDevasthali_Resume.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, width: 900 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+      
+      // New Promise-based usage:
+      html2pdf().set(opt).from(element).save();
+    });
+  </script>
 </body>
 </html>
