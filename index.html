@@ -2,327 +2,519 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Suraj Devasthali - Software Developer CV</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suraj Devasthali - Senior PowerPlatform Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
+      --accent-color: #e74c3c;
+      --light-gray: #f5f7fa;
+      --medium-gray: #e1e8f0;
+      --dark-gray: #7f8c8d;
+      --text-color: #333;
+      --white: #ffffff;
+    }
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+    
     body {
-      font-family: 'Montserrat', sans-serif;
-      background: #f0f2f5;
-      color: #333;
+      font-family: 'Roboto', sans-serif;
+      color: var(--text-color);
       line-height: 1.6;
+      background-color: #f9f9f9;
       padding: 20px;
     }
-    a {
-      color: #3498db;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .container {
-      max-width: 1280px;
+    
+    .resume-container {
+      max-width: 1000px;
       margin: 0 auto;
-      background: #fff;
+      background: var(--white);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       overflow: hidden;
     }
-    header {
-      background: linear-gradient(135deg, #3498db, #8e44ad);
-      color: #fff;
+    
+    /* Header Section */
+    .header {
+      display: flex;
+      align-items: center;
       padding: 30px 40px;
-      text-align: center;
+      background: var(--primary-color);
+      color: var(--white);
     }
-    header h1 {
-      font-size: 2.8em;
+    
+    .profile-pic-container {
+      margin-right: 30px;
+    }
+    
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--secondary-color);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .header-content {
+      flex: 1;
+    }
+    
+    .name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: var(--white);
+    }
+    
+    .title {
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 15px;
+      color: var(--medium-gray);
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+    
+    .contact-item i {
+      margin-right: 8px;
+      color: var(--secondary-color);
+    }
+    
+    /* Main Content */
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 30px;
+      padding: 30px;
+    }
+    
+    /* Left Column */
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    /* Right Column */
+    .right-column {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    /* Section Styling */
+    .section {
       margin-bottom: 10px;
     }
-    header h2 {
-      font-size: 1.4em;
-      font-weight: 400;
-    }
-    .main {
-      padding: 40px;
-    }
-    .section {
-      margin-bottom: 30px;
-    }
+    
     .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-color);
       margin-bottom: 15px;
-      padding-bottom: 5px;
-      border-bottom: 2px solid #eee;
-      color: #8e44ad;
-      font-size: 1.6em;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--medium-gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
-    .contact-profile {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 40px;
+    
+    /* Profile Section */
+    .profile-text {
+      font-size: 0.95rem;
+      text-align: justify;
     }
-    .contact, .profile {
-      flex: 1 1 300px;
-      background: #f9f9f9;
-      padding: 20px;
-      border-radius: 8px;
-    }
-    .contact p, .profile p {
-      margin: 10px 0;
-    }
-    .two-column {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-    .job, .edu, .proj {
+    
+    /* Experience Section */
+    .experience-item, .education-item, .project-item {
       margin-bottom: 20px;
     }
-    .job-title, .edu-title, .proj-title {
-      font-weight: 600;
-      font-size: 1.2em;
-      color: #3498db;
+    
+    .job-header, .education-header, .project-header {
+      display: flex;
+      justify-content: space-between;
       margin-bottom: 5px;
     }
-    .duration {
-      font-style: italic;
-      font-size: 0.9em;
-      color: #777;
+    
+    .job-title, .education-degree, .project-name {
+      font-weight: 600;
+      color: var(--secondary-color);
+      font-size: 1.1rem;
     }
-    .tag-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
+    
+    .company-name, .institution-name {
+      font-weight: 500;
+      color: var(--primary-color);
+    }
+    
+    .job-duration, .education-duration {
+      color: var(--dark-gray);
+      font-size: 0.9rem;
+    }
+    
+    .job-description, .project-description {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 10px;
     }
-    .tag-list li {
-      background: #e1e8f0;
-      padding: 8px 12px;
+    
+    .skill-category {
+      margin-bottom: 15px;
+    }
+    
+    .skill-category-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .skill-tag {
+      background-color: var(--light-gray);
+      padding: 5px 12px;
       border-radius: 20px;
-      font-size: 0.9em;
+      font-size: 0.85rem;
+      color: var(--primary-color);
     }
-    .hobbies p, .declaration p {
-      margin: 10px 0;
+    
+    /* Projects Section */
+    .project-tech {
+      font-style: italic;
+      color: var(--dark-gray);
+      font-size: 0.9rem;
+      margin-top: 5px;
     }
-
-    .profile-pic {
-    width: 140px;
-    height: 140px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid #fff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    margin-bottom: 15px;
-  }
-
-    footer {
+    
+    /* Achievements Section */
+    .achievements-list {
+      list-style-type: none;
+    }
+    
+    .achievement-item {
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+    
+    .achievement-item:before {
+      content: "🏆";
+      position: absolute;
+      left: 0;
+    }
+    
+    /* Hobbies Section */
+    .hobbies-text {
+      font-size: 0.95rem;
+    }
+    
+    /* Declaration Section */
+    .declaration-text {
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+    
+    /* Footer */
+    .footer {
       text-align: center;
-      font-size: 0.8em;
       padding: 15px;
-      background: #f9f9f9;
-      border-top: 1px solid #eee;
-      color: #777;
+      background-color: var(--primary-color);
+      color: var(--white);
+      font-size: 0.8rem;
     }
-
-
+    
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .profile-pic-container {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+      
+      .contact-info {
+        justify-content: center;
+      }
+      
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .skills-container {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <img src="C:\Users\surajde\OneDrive - AMDOCS\Pictures\PassportSizePhoto.jpg" alt="Suraj Devasthali" class="profile-pic">
-      <h1>Suraj Devasthali</h1>
-      <h2>Software Developer</h2>
-    </header>
-
-    <div class="main">
-      <div class="contact-profile">
-        <div class="contact section">
-          <h3 class="section-title">Contact Information</h3>
-          <p><strong>Phone:</strong> 956-144-0619</p>
-          <p><strong>Email:</strong> <a href="mailto:SurajDevasthali@live.com">SurajDevasthali@live.com</a></p>
-          <p><strong>Website:</strong> <a href="http://readerstour.com" target="_blank">ReadersTour.com</a></p>
-        </div>
-        <div class="profile section">
-          <h3 class="section-title">Professional Profile</h3>
-          <p>
-            With over 10 years in IT and 6 years as a PowerPlatform Developer, 
-            I am an automation expert with a proven track record in leading high-impact automation projects and building innovative automation 
-            solutions using various platforms. My expertise spans across designing, implementing, and optimizing automation systems that 
-            enhance operational efficiency and drive business growth. With a strong background in PowerPlatform, 
-            I excel in leveraging cutting-edge technologies to deliver robust and scalable automation solutions.
-
-          </p>
+  <div class="resume-container">
+    <!-- Header Section with Photo, Name, and Contact Info -->
+    <header class="header">
+      <div class="profile-pic-container">
+        <img src="./assets/images/PassportSizePhoto.jpg" alt="Suraj Devasthali" class="profile-pic">
+      </div>
+      <div class="header-content">
+        <h1 class="name">Suraj Devasthali</h1>
+        <h2 class="title">Senior PowerPlatform Developer</h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i>📱</i> 956-144-0619
+          </div>
+          <div class="contact-item">
+            <i>✉️</i> <a href="mailto:SurajDevasthali@live.com" style="color: var(--white);">SurajDevasthali@live.com</a>
+          </div>
+          <div class="contact-item">
+            <i>🌐</i> <a href="http://readerstour.com" target="_blank" style="color: var(--white);">readerstour.com</a>
+          </div>
+          <div class="contact-item">
+            <i>🌐</i> <a href="https://surajdevasthali.github.io/Resume/" target="_blank" style="color: var(--white);">https://surajdevasthali.github.io/Resume/</a>
+          </div>
         </div>
       </div>
-
-      <!-- Work Experience -->
-      <div class="two-column">
-        <div class="section">
+    </header>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Left Column -->
+      <div class="left-column">
+        <!-- Profile -->
+        <section class="section">
+          <h3 class="section-title">Profile</h3>
+          <p class="profile-text">
+            With over 10 years in IT and 6 years as a PowerPlatform Developer, I am an automation expert with a proven track record in leading high-impact automation projects and building innovative automation solutions. My expertise spans across designing, implementing, and optimizing automation systems that enhance operational efficiency and drive business growth.
+          </p>
+        </section>
+        
+        <!-- Skills -->
+        <section class="section">
+          <h3 class="section-title">Skills</h3>
+          <div class="skills-container">
+            <div class="skill-category">
+              <h4 class="skill-category-title">PowerPlatform</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Power Apps</span>
+                <span class="skill-tag">Power Automate</span>
+                <span class="skill-tag">Power BI</span>
+                <span class="skill-tag">Dataverse</span>
+              </div>
+            </div>
+            
+            <div class="skill-category">
+              <h4 class="skill-category-title">Development</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">Spring Boot</span>
+                <span class="skill-tag">HTML/CSS</span>
+                <span class="skill-tag">VBA</span>
+              </div>
+            </div>
+            
+            <div class="skill-category">
+              <h4 class="skill-category-title">Data</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Power Query</span>
+                <span class="skill-tag">DAX</span>
+                <span class="skill-tag">Excel</span>
+              </div>
+            </div>
+            
+            <div class="skill-category">
+              <h4 class="skill-category-title">Tools</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">SharePoint</span>
+                <span class="skill-tag">GitLab</span>
+                <span class="skill-tag">AI Tools</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Key Achievements -->
+        <section class="section">
+          <h3 class="section-title">Key Achievements</h3>
+          <ul class="achievements-list">
+            <li class="achievement-item">Led automation projects resulting in 80% productivity increase and 20% cost reduction</li>
+            <li class="achievement-item">Innovations in automation rewarded at Amdocs 2023</li>
+            <li class="achievement-item">Amdocs Rewards for outstanding contributions 2024</li>
+            <li class="achievement-item">Chess Champion at TCS 2016 & 2017</li>
+          </ul>
+        </section>
+        
+        <!-- Education -->
+        <section class="section">
+          <h3 class="section-title">Education</h3>
+          <div class="education-item">
+            <div class="education-header">
+              <span class="education-degree">MBA (Appeared)</span>
+              <span class="education-duration">2023-2025</span>
+            </div>
+            <div class="company-name">APJ Abdul Kalam Technical University</div>
+          </div>
+          
+          <div class="education-item">
+            <div class="education-header">
+              <span class="education-degree">B.Com</span>
+            </div>
+            <div class="company-name">YCMOU</div>
+          </div>
+        </section>
+        
+        <!-- Hobbies -->
+        <section class="section">
+          <h3 class="section-title">Hobbies</h3>
+          <p class="hobbies-text">
+            Playing flute and guitar, writing travel blogs, and listening to Indian classical music.
+          </p>
+        </section>
+      </div>
+      
+      <!-- Right Column -->
+      <div class="right-column">
+        <!-- Experience -->
+        <section class="section">
           <h3 class="section-title">Work Experience</h3>
-          <div class="job">
-            <div class="job-title">🚧 Software Developer - Amdocs <span class="duration">(March 2020 – Present)</span></div>
-            <p>
+          
+          <div class="experience-item">
+            <div class="job-header">
+              <span class="job-title">Software Developer</span>
+              <span class="job-duration">March 2020 - Present</span>
+            </div>
+            <div class="company-name">Amdocs</div>
+            <p class="job-description">
               Designed, developed, and maintained Power Platform applications to meet diverse business needs. Collaborated with stakeholders to gather requirements, design intuitive interfaces, and develop efficient workflows.
             </p>
           </div>
-          <div class="job">
-            <div class="job-title">🚧 Analyst - Tata Consultancy Services, Pune, India <span class="duration">(June 2014 – Feb 2020)</span></div>
-            <p>
+          
+          <div class="experience-item">
+            <div class="job-header">
+              <span class="job-title">Analyst</span>
+              <span class="job-duration">June 2014 - Feb 2020</span>
+            </div>
+            <div class="company-name">Tata Consultancy Services, Pune, India</div>
+            <p class="job-description">
               Developed canvas apps for mobile devices to enhance user experience and streamline processes. Created and optimized Power Automate flows, driving automation and operational efficiency.
             </p>
           </div>
-
-
-          <!-- Skills -->
-          <h3 class="section-title">Skills</h3>
-          <ul class="tag-list">
-            <li>Power Apps (Canvas and Model-driven)</li>
-            <li>Core Java & Advanced Java</li>
-            <li>Spring Boot</li>
-            <li>GitLab</li>
-            <li>HTML & CSS</li>
-            <li>SharePoint</li>
-            <li>Power Automate</li>
-            <li>Power BI</li>
-            <li>Microsoft Dataverse</li>
-            <li>Power Query & DAX</li>
-            <li>SQL (PostgreSQL, MySQL, SQL Server)</li>
-            <li>Excel Macro & VBA</li>
-            <li>AI Tools ChatGPT Enterprise, Co-Pilot, Deepseek</li>
-          </ul>
-
-
-
-          <!-- Skills -->
-          <br>
-          <br>
-          <h3 class="section-title">Key Achievements:</h3>
-          <ul class="tag-list">
-            <li>Successfully led a major automation project that resulted in a 80% increase in productivity and a 20% reduction in operational costs.</li>
-            <li>Developed and implemented comprehensive automation solutions using various automation platforms, streamlining processes and improving accuracy.</li>
-            <li>Collaborated with cross-functional teams to integrate automation systems seamlessly, ensuring minimal disruption and maximum efficiency.</li>
-          </ul>
-
-        </div>
-        <div class="section">
-          <h3 class="section-title">Projects Summary</h3>
-          <div class="proj">
-            <div class="proj-title">Governance Dashboards</div>
-            <p>
+        </section>
+        
+        <!-- Projects -->
+        <section class="section">
+          <h3 class="section-title">Projects</h3>
+          
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-name">Governance Dashboards</span>
+            </div>
+            <p class="project-description">
               Created a comprehensive dashboard using PowerBI, PowerApps, and SharePoint with role-based access, managing data from 15+ large databases.
             </p>
           </div>
-          <div class="proj">
-            <div class="proj-title">HR Dashboard</div>
-            <p>
+          
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-name">HR Dashboard</span>
+            </div>
+            <p class="project-description">
               Created for higher management to consolidate and analyze HR data through BI and automation flows.
             </p>
           </div>
-          <div class="proj">
-            <div class="proj-title">Gamification</div>
-            <p>
-              The gamification project is designed to measure and enhance employee engagement and performance by integrating various metrics and visualizations. 
-              The project leverages PowerBI for data visualization, HTML and CSS for the front-end interface, DataFlow for data processing, 
-              and SharePoint Lists for data storage.
+          
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-name">Gamification Platform</span>
+            </div>
+            <p class="project-description">
+              Designed to measure and enhance employee engagement and performance by integrating various metrics and visualizations.
             </p>
+            <p class="project-tech">Technologies: PowerBI, HTML/CSS, DataFlow, SharePoint Lists</p>
           </div>
-          <div class="proj">
-            <div class="proj-title">Ticket Management Platform</div>
-            <p>
-              This platform features a sleek design with minimalistic functionality, delivering an exceptional user experience and making a significant impact on business operations.<br>
-              Technologies Used: Java, Microservices, Spring Boot, JDBC, MySQL, HTML & CSS, AWS
+          
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-name">Ticket Management Platform</span>
+            </div>
+            <p class="project-description">
+              Features a sleek design with minimalistic functionality, delivering exceptional user experience and significant business impact.
             </p>
+            <p class="project-tech">Technologies: Java, Microservices, Spring Boot, MySQL, AWS</p>
           </div>
-          <div class="proj">
-            <div class="proj-title">Leave Management System</div>
-            <p>
-              Built with PowerApps, SharePoint, Office 365, and MS-Flow. Features include multi-level approvals, leave balance tracking, calendar integration, and CSV report generation.
+          
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-name">Leave Management System</span>
+            </div>
+            <p class="project-description">
+              Features include multi-level approvals, leave balance tracking, calendar integration, and CSV report generation.
             </p>
+            <p class="project-tech">Technologies: PowerApps, SharePoint, Office 365, MS-Flow</p>
           </div>
-          <div class="proj">
-            <div class="proj-title">Application Monitoring Portal</div>
-            <p>
-              Developed a unified portal to monitor multiple applications with real-time status updates via automated HTML email notifications.
+          
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-name">Personal Blogging Website</span>
+            </div>
+            <p class="project-description">
+              Developed ReadersTour.com, an engaging platform for travel enthusiasts to share and explore travel experiences.
             </p>
+            <p class="project-tech">Technologies: HTML, CSS, JavaScript</p>
           </div>
-          <div class="proj">
-            <div class="proj-title">Timesheet Notification System</div>
-            <p>
-              Employed MS-Flow and PowerBI to deliver missing timesheet notifications formatted in HTML.
-            </p>
-          </div>
-          <div class="proj">
-            <div class="proj-title">Event Calendar Application</div>
-            <p>
-              Designed for management, this app manages LOB-wise events, deadlines, and statuses with easy filtering and editing options.
-            </p>
-          </div>
-          <div class="proj">
-            <div class="proj-title">Personal Blogging Website</div>
-            <p>
-              Developed <a href="http://readerstour.com" target="_blank">ReadersTour.com</a> using HTML, CSS, and JavaScript, 
-              creating an engaging platform for travel enthusiasts to share and explore travel experiences.
-            </p>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- Other Sections -->
-      <div class="section">
-        <h3 class="section-title">Significant Accomplishments</h3>
-        <ul class="tag-list">
-          <li>🏆 Innovations in automation rewarded at Amdocs 2023</li>
-          <li>🏆 Amdocs Rewards for outstanding contributions in automations 2024 </li>
-          <li>🏆 Chess Champion 2016 & 2017 at TCS</li>
-          <li>🏆 Gold Medal in Semaphore and Morse Code, Indian Naval Academy</li>
-          <li>🏆 Silver Medal in Artistic Gymnastics</li>
-        </ul>
-      </div>
-
-
-      <!-- Skills & Education -->
-      <div class="two-column">
-        <div class="section">
-          <h3 class="section-title">Education</h3>
-          <div class="edu">
-            <div class="edu-title">MBA (Appeared) - APK Abdul Kalam Technical University <span class="duration">(2023 – 2025)</span></div>
-          </div>
-          <div class="edu">
-            <div class="edu-title">B.Com - YCMOU</div>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="section">
-        <h3 class="section-title">Other Academic Details</h3>
-        <ul class="tag-list">
-          <li>Full Stack Development, from FullStackGuru</li>
-          <li>SQL & VBA, from Meraudi Education</li>
-          <li>Excel Expert Analytics, from Finatics Online</li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <h3 class="section-title">Hobbies</h3>
-        <p>Playing musical instruments such as Flute and Guitar, writing travel blogs, and listening to indian classical musics.</p>
-      </div>
-
-      <div class="section">
-        <h3 class="section-title">Declaration</h3>
-        <p>I hereby declare that the above information is true to the best of my knowledge and I bear the responsibility for its correctness.</p>
+        </section>
+        
+        <!-- Additional Training -->
+        <section class="section">
+          <h3 class="section-title">Additional Training</h3>
+          <ul class="achievements-list">
+            <li class="achievement-item">Full Stack Development - FullStackGuru</li>
+            <li class="achievement-item">SQL & VBA - Meraudi Education</li>
+            <li class="achievement-item">Excel Expert Analytics - Finatics Online</li>
+          </ul>
+        </section>
+        
+        <!-- Declaration -->
+        <section class="section">
+          <h3 class="section-title">Declaration</h3>
+          <p class="declaration-text">
+            I hereby declare that the above information is true to the best of my knowledge and I bear the responsibility for its correctness.
+          </p>
+        </section>
       </div>
     </div>
-
-    <footer>
+    
+    <!-- Footer -->
+    <footer class="footer">
       &copy; 2025 Suraj Devasthali. All Rights Reserved.
     </footer>
   </div>
